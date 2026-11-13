@@ -1,0 +1,865 @@
+# Damla Movie RAG Corpus
+# Personal ratings/notes are synthetic demo data unless marked from IMDb export.
+# Use with: uv run python -m retrieval_app "..." --corpus data/my_movies.txt
+
+## MY TASTE PROFILE
+I rate highly: tense social dramas, offbeat/anxious romance, smart low-budget sci-fi, stylish crime thrillers, and a few comfort comedies with real craft.
+I rate medium: glossy studio thrillers and franchise entries that are fun but hollow.
+I rate low: broad underwritten comedies, empty holiday formula, prestige films that feel like homework.
+I rewatch: Shiva Baby, Coherence, Drive, Palm Springs, My Cousin Vinny, The Others.
+Best nights alone: Moon, Nightcrawler, The Lighthouse.
+Best with friends: Game Night, Ready or Not, Wild Tales.
+When tired: avoid Brutalist-length prestige; pick Palm Springs or Last Holiday instead.
+Turkish / local notes I care about: LCV felt closer than festival-flex cinema; some local comedies bounced hard.
+
+## DIRECTOR CLUSTER: THOMAS VINTERBERG
+Films in my list: The Hunt, The Celebration, Submarino.
+Across them I notice: social systems crushing individuals, ugly honesty, handheld moral pressure.
+If I ask for "more Vinterberg energy," start with The Hunt then The Celebration. Watchlist extension: The Commune.
+
+## DIRECTOR CLUSTER: SMART SCI-FI / REALITY GLITCH
+Films: Moon, Coherence, Looper, Palm Springs, Upgrade.
+Shared taste signal: idea-driven, character-first, not just CGI flex.
+If recommending from my list for "mind-bend but emotional," these are the pool.
+
+## HOW TO ASK ME (examples for testing RAG)
+Lookup: "What did I say about Coherence?"
+Lookup: "My rating for The Brutalist?"
+Needs 2+ chunks: "Compare Vinterberg films in my list."
+Needs 2+ chunks: "Using my taste profile and my 9/10 sci-fi picks, recommend a rewatch."
+Recommend-from-list: "Based on my ratings, recommend one film from my watched list for an anxious night."
+Recommend-from-watchlist: "Based on my taste, pick one WATCHLIST title and explain why."
+Decline: "What did I rate Dune: Part Two?" (not in corpus — should refuse)
+
+---
+
+## WATCHLIST / CANDIDATES
+# Not watched. Use these when I ask: "recommend something new based on my taste."
+
+### After Yang (2021)
+Director: Kogonada
+Genres: Drama, Family, Sci-Fi
+IMDb: 6.6
+Why it might fit: Quiet sci-fi grief next to my love of Moon and Coherence — idea-driven, soft, human.
+Fits tags: smart sci-fi, lonely, rewatch-energy
+Status: not watched
+
+### Decision to Leave (2022)
+Director: Park Chan-wook
+Genres: Crime, Drama, Mystery, Romance, Thriller
+IMDb: 7.2
+Why it might fit: Stylish crime-romance tension near Nightcrawler craft + Black Bag trust-rot vibes.
+Fits tags: sleek thriller, obsessive, adult
+Status: not watched
+
+### Inside Llewyn Davis (2013)
+Directors: Ethan Coen, Joel Coen
+Genres: Drama, Music
+IMDb: 7.4
+Why it might fit: Melancholy music-world belonging like Almost Famous, but colder and funnier-sad.
+Fits tags: music, bittersweet, character study
+Status: not watched
+
+### Amadeus (1984)
+Director: Miloš Forman
+Genres: Biography, Drama, Music
+IMDb: 8.4
+Why it might fit: Genius/envy melodrama with theatrical electricity — prestige I might actually enjoy if not Brutalist-long punishment.
+Fits tags: music, rivalry, operatic drama
+Status: not watched
+
+### The Thing (1982)
+Director: John Carpenter
+Genres: Horror, Mystery, Sci-Fi
+IMDb: 8.2
+Why it might fit: Paranoia creature craft for fans of The Others / Longlegs atmosphere over jump-scare junk.
+Fits tags: isolation horror, distrust, classic
+Status: not watched
+
+### Misery (1990)
+Director: Rob Reiner
+Genres: Drama, Thriller
+IMDb: 7.8
+Why it might fit: Claustrophobic pressure-cooker like Shiva Baby energy, but thriller-brutal.
+Fits tags: trapped, tense, rewatchable thriller
+Status: not watched
+
+### Spotlight (2015)
+Director: Tom McCarthy
+Genres: Biography, Crime, Drama
+IMDb: 8.1
+Why it might fit: Procedural moral seriousness adjacent to Nightcrawler's media world, without the sleaze flex.
+Fits tags: journalism, ensemble, grounded
+Status: not watched
+
+### Aftersun (2022)
+Director: Charlotte Wells
+Genres: Drama
+IMDb: 7.6
+Why it might fit: Quiet ache like The Farewell / Hot Milk / Girl Picture — memory and love without speeches.
+Fits tags: soft devastation, intimate, rewatch
+Status: not watched
+
+### Another Earth (2011)
+Director: Mike Cahill
+Genres: Drama, Romance, Sci-Fi
+IMDb: 6.9
+Why it might fit: Low-budget parallel-earth emotion in the Moon / Coherence family.
+Fits tags: smart sci-fi, guilt, intimate
+Status: not watched
+
+### Vivarium (2019)
+Director: Lorcan Finnegan
+Genres: Horror, Mystery, Sci-Fi
+IMDb: 5.8
+Why it might fit: Suburban nightmare loop near Palm Springs existential comedy but darker — also Companion/Upgrade unease.
+Fits tags: uncanny suburbia, trapped, weird
+Status: not watched
+
+### Dogville (2003)
+Director: Lars von Trier
+Genres: Crime, Drama
+IMDb: 8.0
+Why it might fit: Social system crushing a person — same nerve as The Hunt / The Celebration.
+Fits tags: confrontational, theatrical, heavy
+Status: not watched
+
+### The Commune (2016)
+Director: Thomas Vinterberg
+Genres: Drama
+IMDb: 6.4
+Why it might fit: Direct Vinterberg cluster extension after The Hunt / Celebration / Submarino.
+Fits tags: Vinterberg, relationships, social experiment
+Status: not watched
+
+### A Separation (2011)
+Director: Asghar Farhadi
+Genres: Drama
+IMDb: 8.3
+Why it might fit: Moral knot drama with no easy villain — Hunt-level ethical dread in domestic form.
+Fits tags: moral thriller-drama, precise, devastating
+Status: not watched
+
+### Mulholland Drive (2001)
+Director: David Lynch
+Genres: Drama, Mystery, Thriller
+IMDb: 7.9
+Why it might fit: Dream-logic mystery for Cloud Atlas / Strange Darling "don't explain too fast" taste.
+Fits tags: surreal, Hollywood nightmare, rewatch puzzle
+Status: not watched
+
+### When Harry Met Sally... (1989)
+Director: Rob Reiner
+Genres: Comedy, Drama, Romance
+IMDb: 7.7
+Why it might fit: Comfort romcom craft next to Palm Springs / Punch-Drunk Love — smarter than holiday filler.
+Fits tags: romance, dialogue, comfort
+Status: not watched
+
+### Harold and Maude (1971)
+Director: Hal Ashby
+Genres: Comedy, Drama, Romance
+IMDb: 7.8
+Why it might fit: Offbeat romance oddity like Punch-Drunk Love / Humanist Vampire tenderness-weird mix.
+Fits tags: quirky romance, darkly sweet
+Status: not watched
+
+### Godzilla Minus One (2023)
+Director: Takashi Yamazaki
+Genres: Action, Adventure, Drama, Horror, Sci-Fi
+IMDb: 7.7
+Why it might fit: Spectacle with sincere postwar emotion — Rogue One "war film under genre skin" energy.
+Fits tags: kaiju, grief, craft blockbuster
+Status: not watched
+
+### Heretic (2024)
+Directors: Scott Beck, Bryan Woods
+Genres: Horror, Thriller
+IMDb: 7.0
+Why it might fit: Talky dread chamber piece for Longlegs / Speak No Evil stress fans.
+Fits tags: claustrophobic horror, ideas, tense
+Status: not watched
+
+### The Invisible Man (2020)
+Director: Leigh Whannell
+Genres: Drama, Horror, Mystery, Sci-Fi, Thriller
+IMDb: 7.1
+Why it might fit: Same director brain as Upgrade — lean genre with real craft and paranoia.
+Fits tags: Whannell, invisible threat, sharp
+Status: not watched
+
+### God's Own Country (2017)
+Director: Francis Lee
+Genres: Drama, Romance
+IMDb: 7.6
+Why it might fit: Queer tenderness + landscape intensity near Desert Hearts / Saving Face / Girl Picture.
+Fits tags: queer romance, raw, pastoral
+Status: not watched
+
+### Water Lilies (2007)
+Director: Céline Sciamma
+Genres: Drama, Romance
+IMDb: 6.7
+Why it might fit: Adolescent queer longing honesty like Girl Picture, softer than prestige homework.
+Fits tags: coming-of-age, queer, intimate
+Status: not watched
+
+### Force Majeure (2014)
+Director: Ruben Östlund
+Genres: Comedy, Drama
+IMDb: 7.2
+Why it might fit: Social awkwardness as thriller — Shiva Baby cousin in ski-resort form; ego under pressure.
+Fits tags: cringe-drama, satire, relationships
+Status: not watched
+
+---
+
+## WATCHED
+
+### The Hunt (2012)
+Director: Thomas Vinterberg
+Genres: Drama
+IMDb: 8.3 | My rating: 9/10
+Would rewatch: yes | Best for: alone, heavy night
+Notes: Social horror without monsters. The collapse of trust is more frightening than jump scares. Precision + dread.
+Similar in my list: The Celebration, Submarino
+One personal detail: I kept thinking about how quickly a room can turn.
+
+### Anora (2024)
+Director: Sean Baker
+Genres: Comedy, Drama, Romance
+IMDb: 7.4 | My rating: 8/10
+Would rewatch: yes | Best for: alert night
+Notes: Chaotic, funny, then unexpectedly bruised. Dialogue has street electricity.
+Similar in my list: Uncut Gems, A Real Pain
+One personal detail: ending mood stuck longer than the jokes.
+
+### The Lighthouse (2019)
+Director: Robert Eggers
+Genres: Drama, Fantasy, Horror, Mystery, Thriller
+IMDb: 7.3 | My rating: 8/10
+Would rewatch: maybe | Best for: alone, stormy mood
+Notes: Claustrophobic myth-comedy-horror. Black-and-white texture is the point.
+Similar in my list: Pearl, Longlegs
+One personal detail: not "fun scary" — more "possessed by seawater."
+
+### Punch-Drunk Love (2002)
+Director: Paul Thomas Anderson
+Genres: Comedy, Drama, Romance, Thriller
+IMDb: 7.3 | My rating: 9/10
+Would rewatch: yes | Best for: alone
+Notes: Romance as panic and softness at once. Color/sound feel handmade for anxiety.
+Similar in my list: Shiva Baby, Palm Springs
+One personal detail: one of the only romances that feels like my nervous system.
+
+### A Real Pain (2024)
+Director: Jesse Eisenberg
+Genres: Comedy, Drama
+IMDb: 7.0 | My rating: 8/10
+Would rewatch: yes | Best for: quiet evening
+Notes: Grief + irritation sharing a suitcase. Culkin is luminous and annoying in a human way.
+Similar in my list: The Farewell, Almost Famous
+One personal detail: laughed then felt guilty for laughing.
+
+### The Wild Robot (2024)
+Director: Chris Sanders
+Genres: Animation, Adventure, Family, Sci-Fi
+IMDb: 8.1 | My rating: 9/10
+Would rewatch: yes | Best for: reset / soft night
+Notes: Parenting and belonging without syrup overload. Clean emotional architecture.
+Similar in my list: English Vinglish
+One personal detail: cried at "family is made" themes.
+
+### The Brutalist (2024)
+Director: Brady Corbet
+Genres: Drama
+IMDb: 7.2 | My rating: 5/10
+Would rewatch: no | Best for: never when tired
+Notes: Monumental craft, punishing sit. Respected the ambition more than the experience.
+Similar in my list: (anti-pick vs) Train Dreams which did quiet epic better for me
+One personal detail: this is my warning label for "prestige runtime."
+
+### The Girl with the Needle (2024)
+Director: Magnus von Horn
+Genres: Crime, Drama, History
+IMDb: 7.5 | My rating: 8/10
+Would rewatch: maybe | Best for: alone
+Notes: Historical nightmare with controlled brutality. Hard to shake.
+Similar in my list: The Celebration, Speak No Evil
+One personal detail: felt physically cold after.
+
+### Ready or Not (2019)
+Directors: Matt Bettinelli-Olpin, Tyler Gillett
+Genres: Comedy, Horror, Mystery
+IMDb: 6.9 | My rating: 8/10
+Would rewatch: yes | Best for: friends
+Notes: Class-hunt wedding comedy with blood. Rewatchable chaos.
+Similar in my list: Game Night, Strange Darling
+One personal detail: comfort violent comedy.
+
+### Longlegs (2024)
+Director: Osgood Perkins
+Genres: Crime, Horror, Mystery, Thriller
+IMDb: 6.5 | My rating: 7/10
+Would rewatch: maybe | Best for: alone
+Notes: Atmosphere elite; plot logic softer. Cage is the infection vector.
+Similar in my list: The Lighthouse, Smile 2
+One personal detail: vibe > story for me here.
+
+### The Fall (2006)
+Director: Tarsem Singh
+Genres: Adventure, Drama, Fantasy
+IMDb: 7.8 | My rating: 9/10
+Would rewatch: yes | Best for: visual hunger
+Notes: Storytelling through a child's imagination; pure image intoxication.
+Similar in my list: Cloud Atlas, The Phoenician Scheme
+One personal detail: "look at this" cinema peak.
+
+### Pearl (2022)
+Director: Ti West
+Genres: Drama, Horror, Thriller
+IMDb: 7.0 | My rating: 8/10
+Would rewatch: yes | Best for: alone
+Notes: Ambition meltdown as horror. Mia Goth goes supernova.
+Similar in my list: Promising Young Woman, Saltburn
+One personal detail: the smile is a weapon.
+
+### Mickey 17 (2025)
+Director: Bong Joon Ho
+Genres: Adventure, Comedy, Fantasy, Sci-Fi
+IMDb: 6.7 | My rating: 7/10
+Would rewatch: maybe | Best for: alert
+Notes: Cloning labor satire with Bong politics. Baggy but inventive.
+Similar in my list: Starship Troopers, Upgrade
+One personal detail: laughed at bureaucracy more than gags.
+
+### Shiva Baby (2020)
+Director: Emma Seligman
+Genres: Comedy, Drama
+IMDb: 7.1 | My rating: 9/10
+Would rewatch: yes | Best for: alone or one friend
+Notes: Social anxiety as thriller. Tiny space, huge pressure cooker.
+Similar in my list: Punch-Drunk Love, Uncut Gems
+One personal detail: my nervous system recognized this instantly.
+
+### Starship Troopers (1997)
+Director: Paul Verhoeven
+Genres: Action, Adventure, Sci-Fi, Thriller
+IMDb: 7.3 | My rating: 9/10
+Would rewatch: yes | Best for: friends who get satire
+Notes: Fascist recruitment ad as blockbuster. Still misunderstood; still perfect.
+Similar in my list: Mickey 17
+One personal detail: my "are you watching the subtext?" test movie.
+
+### Tampopo (1985)
+Director: Jūzō Itami
+Genres: Comedy
+IMDb: 7.9 | My rating: 9/10
+Would rewatch: yes | Best for: food night
+Notes: Noodle western + food eroticism + discipline comedy. Modular yet cohesive.
+Similar in my list: The Taste of Things
+One personal detail: made me hungry and weirdly emotional.
+
+### LCV (Lütfen Cevap Veriniz) (2022)
+Directors: Kaan Arici, Ismet Kurtulus
+Genres: Drama
+IMDb: 6.4 | My rating: 7/10
+Would rewatch: yes | Best for: quiet
+Notes: Intimate Turkish drama with local texture. Felt nearer than imported prestige.
+Similar in my list: Hot Milk, Girl Picture
+One personal detail: rarity bonus — closer to my world.
+
+### The Celebration (1998)
+Director: Thomas Vinterberg
+Genres: Drama
+IMDb: 8.0 | My rating: 9/10
+Would rewatch: yes | Best for: alone
+Notes: Family gathering as detonation. Dogme rawness still violent emotionally.
+Similar in my list: The Hunt, Submarino
+One personal detail: table scenes make me brace.
+
+### Submarino (2010)
+Director: Thomas Vinterberg
+Genres: Drama
+IMDb: 7.5 | My rating: 8/10
+Would rewatch: maybe | Best for: alone
+Notes: Brotherly ruin in cold light. Quieter Vinterberg, still devastating.
+Similar in my list: The Hunt, The Celebration
+One personal detail: the "less famous but strong" Vinterberg for me.
+
+### Looper (2012)
+Director: Rian Johnson
+Genres: Action, Drama, Sci-Fi, Thriller
+IMDb: 7.4 | My rating: 8/10
+Would rewatch: yes | Best for: alert
+Notes: Time travel serving character, not just puzzle flex.
+Similar in my list: Coherence, Moon
+One personal detail: ending still works emotionally.
+
+### Black Bag (2025)
+Director: Steven Soderbergh
+Genres: Drama, Mystery, Romance, Thriller
+IMDb: 6.7 | My rating: 7/10
+Would rewatch: maybe | Best for: adult night
+Notes: Spy marriage as chess. Cool restraint over set pieces.
+Similar in my list: Nightcrawler
+One personal detail: I like spies when they're about trust rot.
+
+### Upgrade (2018)
+Director: Leigh Whannell
+Genres: Action, Sci-Fi, Thriller
+IMDb: 7.5 | My rating: 8/10
+Would rewatch: yes | Best for: alone
+Notes: Body-tech revenge with clear action geography. Lean and nasty.
+Similar in my list: Companion, Mickey 17
+One personal detail: my "smart B-movie" gold standard.
+
+### Drive (2011)
+Director: Nicolas Winding Refn
+Genres: Action, Drama
+IMDb: 7.8 | My rating: 9/10
+Would rewatch: yes | Best for: night drive mood
+Notes: Silence as style. Neon myth of a man who shouldn't talk.
+Similar in my list: Nightcrawler, The Batman
+One personal detail: soundtrack permanently installed.
+
+### Strange Darling (2023)
+Director: JT Mollner
+Genres: Horror, Thriller
+IMDb: 7.0 | My rating: 8/10
+Would rewatch: maybe | Best for: no spoilers night
+Notes: Structure is the knife. Violent, clever, anti-spoiler cinema.
+Similar in my list: Ready or Not, The Invisible Guest
+One personal detail: told friends "don't Google anything."
+
+### Civil War (2024)
+Director: Alex Garland
+Genres: Action, Thriller, War
+IMDb: 7.0 | My rating: 6/10
+Would rewatch: no | Best for: once
+Notes: Journalistic dread images strong; politics too abstracted for me.
+Similar in my list: Rogue One, Weapons
+One personal detail: remembered shots more than people.
+
+### Cloud Atlas (2012)
+Directors: Tom Tykwer, Lana Wachowski, Lilly Wachowski
+Genres: Drama, Mystery, Sci-Fi, Thriller
+IMDb: 7.3 | My rating: 8/10
+Would rewatch: yes | Best for: long haul
+Notes: Messy maximalism I defend. Recurrence theme hits even when plot wobbles.
+Similar in my list: The Fall, The Life of Chuck
+One personal detail: I like ambition that risks looking foolish.
+
+### Humanist Vampire Seeking Consenting Suicidal Person (2023)
+Director: Ariane Louis-Seize
+Genres: Comedy, Drama, Fantasy, Horror
+IMDb: 7.0 | My rating: 8/10
+Would rewatch: yes | Best for: soft weird night
+Notes: Gentle goth comedy. Vampire movie with manners and ache.
+Similar in my list: Palm Springs, Girl Picture
+One personal detail: unexpectedly wholesome bloodsucking.
+
+### Almost Famous (2000)
+Director: Cameron Crowe
+Genres: Adventure, Comedy, Drama, Music
+IMDb: 7.9 | My rating: 9/10
+Would rewatch: yes | Best for: nostalgia
+Notes: Tour-bus belonging and heartbreak. Tiny Dancer scene permanent.
+Similar in my list: Zindagi Na Milegi Dobara, The Farewell
+One personal detail: my "music people finding home" movie.
+
+### The Batman (2022)
+Director: Matt Reeves
+Genres: Action, Crime, Mystery
+IMDb: 7.8 | My rating: 8/10
+Would rewatch: yes | Best for: rainy night
+Notes: Detective Batman finally. Long, but aesthetic locked.
+Similar in my list: Drive, Nightcrawler
+One personal detail: riddler newsprint vibe > punchouts.
+
+### Palm Springs (2020)
+Director: Max Barbakow
+Genres: Comedy, Fantasy, Mystery, Romance, Sci-Fi
+IMDb: 7.4 | My rating: 9/10
+Would rewatch: yes | Best for: date or alone reset
+Notes: Time-loop romcom with actual existential joke structure.
+Similar in my list: Coherence, Punch-Drunk Love
+One personal detail: comfort movie that still thinks.
+
+### Sinners (2025)
+Director: Ryan Coogler
+Genres: Horror
+IMDb: 7.5 | My rating: 8/10
+Would rewatch: yes | Best for: alert horror night
+Notes: Culture + craft in a big horror swing. Sticky ambition.
+Similar in my list: Pearl, Us
+One personal detail: felt like "event horror" without empty IP.
+
+### Companion (2025)
+Director: Drew Hancock
+Genres: Sci-Fi, Thriller
+IMDb: 6.9 | My rating: 7/10
+Would rewatch: maybe | Best for: one watch + talk after
+Notes: AI-partner thriller with gender politics. Twists a bit loud, still fun.
+Similar in my list: Upgrade, Black Bag
+One personal detail: concept smarter than some of the turns.
+
+### Rogue One (2016)
+Director: Gareth Edwards
+Genres: Action, Adventure, Sci-Fi
+IMDb: 7.8 | My rating: 8/10
+Would rewatch: yes | Best for: friends
+Notes: War film in Star Wars clothing. Vader hallway is permanent.
+Similar in my list: Civil War, Starship Troopers
+One personal detail: sacrifice ending actually hurts.
+
+### Super Deluxe (2019)
+Director: Thiagarajan Kumararaja
+Genres: Comedy, Crime, Drama, Thriller
+IMDb: 8.2 | My rating: 9/10
+Would rewatch: yes | Best for: alert
+Notes: Interlocking moral chaos. Bold, funny, nasty, humane.
+Similar in my list: Wild Tales, Uncut Gems
+One personal detail: my "why don't more people talk about this" title.
+
+### Moon (2009)
+Director: Duncan Jones
+Genres: Drama, Mystery, Sci-Fi
+IMDb: 7.8 | My rating: 9/10
+Would rewatch: yes | Best for: alone
+Notes: Clone loneliness on a shoestring. Rockwell carries a planet.
+Similar in my list: Coherence
+One personal detail: quiet sci-fi > spectacle sci-fi for me.
+
+### The World's End (2013)
+Director: Edgar Wright
+Genres: Action, Comedy, Sci-Fi
+IMDb: 6.9 | My rating: 8/10
+Would rewatch: yes | Best for: friends
+Notes: Pub-crawl apocalypse about refusing adulthood. Underrated Cornetto chapter.
+Similar in my list: Game Night
+One personal detail: ending is secretly sad.
+
+### Coherence (2013)
+Director: James Ward Byrkit
+Genres: Mystery, Sci-Fi, Thriller
+IMDb: 7.1 | My rating: 9/10
+Would rewatch: yes | Best for: alone then immediately rewatch
+Notes: Dinner-party multiverse paranoia. No-budget masterclass.
+Similar in my list: Moon, Palm Springs
+One personal detail: told everyone "just watch, no questions."
+
+### My Cousin Vinny (1992)
+Director: Jonathan Lynn
+Genres: Comedy, Crime
+IMDb: 7.6 | My rating: 9/10
+Would rewatch: yes | Best for: comfort
+Notes: Courtroom comedy engineering. Expert testimony scene forever.
+Similar in my list: Game Night, The Invisible Guest
+One personal detail: peak "competence is sexy" comedy.
+
+### Drive-Away Dolls (2024)
+Director: Ethan Coen
+Genres: Action, Comedy, Crime, Thriller
+IMDb: 5.4 | My rating: 7/10
+Would rewatch: maybe | Best for: chaotic mood
+Notes: Horny pulp road comedy; messy on purpose. Vibe > glue.
+Similar in my list: Ready or Not
+One personal detail: I liked it more than the score suggests.
+
+### My Old Ass (2024)
+Director: Megan Park
+Genres: Comedy, Drama, Fantasy, Romance
+IMDb: 6.9 | My rating: 5/10
+Would rewatch: no | Best for: skip when needing edge
+Notes: Cute future-self premise, too tidy emotionally for me.
+Similar in my list: (contrast) Palm Springs did existential comedy better
+One personal detail: wanted sharper teeth.
+
+### Game Night (2018)
+Directors: John Francis Daley, Jonathan Goldstein
+Genres: Action, Adventure, Comedy, Crime, Mystery, Thriller
+IMDb: 6.9 | My rating: 8/10
+Would rewatch: yes | Best for: friends
+Notes: Joke construction elite. Modern studio comedy that actually works.
+Similar in my list: Ready or Not, My Cousin Vinny
+One personal detail: my "bring this to a group" default.
+
+### Wild Tales (2014)
+Director: Damián Szifron
+Genres: Comedy, Drama, Thriller
+IMDb: 8.1 | My rating: 9/10
+Would rewatch: yes | Best for: friends
+Notes: Anthology revenge catharsis. Wedding episode is insanity.
+Similar in my list: Super Deluxe, Ready or Not
+One personal detail: anger never felt this fun.
+
+### The Invisible Guest (2016)
+Director: Oriol Paulo
+Genres: Crime, Drama, Mystery, Thriller
+IMDb: 8.0 | My rating: 8/10
+Would rewatch: yes | Best for: twist night
+Notes: Spanish puzzle thriller that keeps flipping.
+Similar in my list: Strange Darling, Wake Up Dead Man
+One personal detail: love "one more card over" mysteries.
+
+### Zindagi Na Milegi Dobara (2011)
+Director: Zoya Akhtar
+Genres: Adventure, Comedy, Drama, Musical, Romance
+IMDb: 8.2 | My rating: 9/10
+Would rewatch: yes | Best for: travel yearning
+Notes: Friendship trip with real emotional spine. Spain + growth.
+Similar in my list: Almost Famous, The Farewell
+One personal detail: makes me want a trip and a cry.
+
+### Eddington (2025)
+Director: Ari Aster
+Genres: Comedy, Drama, Western
+IMDb: 6.6 | My rating: 6/10
+Would rewatch: no | Best for: once, discuss after
+Notes: American civic fever dream. Interesting more than pleasurable.
+Similar in my list: Civil War, Saltburn
+One personal detail: unsettled me without loving me.
+
+### Nightcrawler (2014)
+Director: Dan Gilroy
+Genres: Crime, Drama, Thriller
+IMDb: 7.8 | My rating: 9/10
+Would rewatch: yes | Best for: alone
+Notes: Media predator character study. Capitalism horror without ghosts.
+Similar in my list: Drive, Uncut Gems
+One personal detail: Gyllenhaal smile is a threat.
+
+### Battle Royale (2000)
+Director: Kinji Fukasaku
+Genres: Action, Drama, Thriller
+IMDb: 7.5 | My rating: 8/10
+Would rewatch: maybe | Best for: alert
+Notes: Teen death-game original trauma. Meaner than imitators.
+Similar in my list: Starship Troopers, Ready or Not
+One personal detail: historical context makes it harsher.
+
+### Hot Milk (2025)
+Director: Rebecca Lenkiewicz
+Genres: Drama
+IMDb: 5.6 | My rating: 7/10
+Would rewatch: maybe | Best for: quiet
+Notes: Mother-daughter stuckness under heat. Stressful in a respectful way.
+Similar in my list: LCV, Girl Picture
+One personal detail: rated above IMDb because mood matched me.
+
+### Uncut Gems (2019)
+Directors: Benny Safdie, Josh Safdie
+Genres: Crime, Drama, Thriller
+IMDb: 7.4 | My rating: 9/10
+Would rewatch: yes (rarely) | Best for: when I can handle stress
+Notes: Anxiety as form. Sandler spiral; need a nap after.
+Similar in my list: Shiva Baby, Nightcrawler
+One personal detail: my heart-rate movie.
+
+### Girl Picture (2022)
+Director: Alli Haapasalo
+Genres: Drama, Romance
+IMDb: 6.9 | My rating: 8/10
+Would rewatch: yes | Best for: soft night
+Notes: Finnish teen friendship and queer longing without speeches.
+Similar in my list: Desert Hearts, Saving Face
+One personal detail: honesty over plot fireworks.
+
+### The Life of Chuck (2024)
+Director: Mike Flanagan
+Genres: Drama, Fantasy, Sci-Fi
+IMDb: 7.3 | My rating: 8/10
+Would rewatch: yes | Best for: emotional night
+Notes: Nonlinear life fable that got me. Warmth without pure horror mode.
+Similar in my list: Cloud Atlas, English Vinglish
+One personal detail: cried at ordinary life being cosmic.
+
+### English Vinglish (2012)
+Director: Gauri Shinde
+Genres: Comedy, Drama, Family
+IMDb: 7.8 | My rating: 9/10
+Would rewatch: yes | Best for: soft reset
+Notes: Language, dignity, and quiet power. Sridevi luminous.
+Similar in my list: The Farewell, Saving Face
+One personal detail: cried without tragedy set pieces.
+
+### Saving Face (2004)
+Director: Alice Wu
+Genres: Comedy, Drama, Romance
+IMDb: 7.4 | My rating: 9/10
+Would rewatch: yes | Best for: comfort + courage
+Notes: Queer Chinese-American family comedy with real stakes.
+Similar in my list: The Farewell, Desert Hearts
+One personal detail: my "joy with consequences" romance.
+
+### Back to the Future (1985)
+Director: Robert Zemeckis
+Genres: Adventure, Comedy, Sci-Fi
+IMDb: 8.5 | My rating: 9/10
+Would rewatch: yes | Best for: anyone
+Notes: Perfect popcorn engineering. Time-travel clarity still unmatched.
+Similar in my list: Palm Springs, Looper
+One personal detail: always works; no caveats.
+
+### The Farewell (2019)
+Director: Lulu Wang
+Genres: Comedy, Drama, Family
+IMDb: 7.5 | My rating: 9/10
+Would rewatch: yes | Best for: family feelings
+Notes: Lie-as-love diasporic story. Gentle cultural tension.
+Similar in my list: English Vinglish, Saving Face
+One personal detail: the goodbye that isn't named.
+
+### The Royal Tenenbaums (2001)
+Director: Wes Anderson
+Genres: Comedy, Drama
+IMDb: 7.6 | My rating: 9/10
+Would rewatch: yes | Best for: rainy day
+Notes: Melancholy dollhouse family. Peak Anderson emotion for me.
+Similar in my list: Almost Famous
+One personal detail: sad-funny baseline.
+
+### Sunshine (2007)
+Director: Danny Boyle
+Genres: Sci-Fi, Thriller
+IMDb: 7.2 | My rating: 8/10
+Would rewatch: yes | Best for: alone
+Notes: Crew vs sun dread; ending divides people. First acts sublime.
+Similar in my list: Moon, Rogue One
+One personal detail: I defend it in arguments.
+
+### Desert Hearts (1985)
+Director: Donna Deitch
+Genres: Drama, Romance
+IMDb: 7.1 | My rating: 8/10
+Would rewatch: yes | Best for: soft intense night
+Notes: Desert queer awakening classic. Heat + risk + tenderness.
+Similar in my list: Saving Face, Girl Picture
+One personal detail: foundational romance texture.
+
+### Weapons (2025)
+Director: Zach Cregger
+Genres: Horror, Mystery
+IMDb: 7.4 | My rating: 8/10
+Would rewatch: yes | Best for: mystery-horror night
+Notes: Community nightmare puzzle. Creepy construction.
+Similar in my list: Longlegs
+One personal detail: wanted slightly tighter landing, still strong.
+
+### Saltburn (2023)
+Director: Emerald Fennell
+Genres: Comedy, Drama, Thriller
+IMDb: 7.0 | My rating: 7/10
+Would rewatch: maybe | Best for: once then argue
+Notes: Class invasion vibes over airtight plot. Images unforgettable.
+Similar in my list: Promising Young Woman, Pearl
+One personal detail: remembered bathroom more than themes.
+
+### Caught Stealing (2025)
+Director: Darren Aronofsky
+Genres: Comedy, Crime, Thriller
+IMDb: 6.8 | My rating: 6/10
+Would rewatch: no | Best for: casual
+Notes: Crime-comedy gear for Aronofsky. Fun chaos, not haunting.
+Similar in my list: Drive-Away Dolls
+One personal detail: fine, not sticky.
+
+### Promising Young Woman (2020)
+Director: Emerald Fennell
+Genres: Crime, Drama, Mystery, Thriller
+IMDb: 7.5 | My rating: 8/10
+Would rewatch: maybe | Best for: alert
+Notes: Candy revenge with bitter finish. Ending still argues in my head.
+Similar in my list: Pearl, Saltburn
+One personal detail: tonal whiplash is the point and the problem.
+
+### The Others (2001)
+Director: Alejandro Amenábar
+Genres: Horror, Mystery, Thriller
+IMDb: 7.6 | My rating: 9/10
+Would rewatch: yes | Best for: classic scare night
+Notes: Atmosphere ghost story done right. Twist + mood elite.
+Similar in my list: Longlegs, Weapons
+One personal detail: still my ghost-story benchmark.
+
+### Train Dreams (2025)
+Director: Clint Bentley
+Genres: Drama
+IMDb: 7.5 | My rating: 8/10
+Would rewatch: yes | Best for: quiet
+Notes: Sparse American labor elegy. Quiet epic that didn't punish me like The Brutalist.
+Similar in my list: Moon, The Farewell
+One personal detail: proof I can love slow if it breathes.
+
+### Wake Up Dead Man (2025)
+Director: Rian Johnson
+Genres: Comedy, Crime, Drama, Mystery, Thriller
+IMDb: 7.3 | My rating: 8/10
+Would rewatch: yes | Best for: puzzle night
+Notes: Knives Out puzzle pleasure with new clothes.
+Similar in my list: The Invisible Guest, Game Night
+One personal detail: clue-density makes me happy.
+
+### One Battle After Another (2025)
+Director: Paul Thomas Anderson
+Genres: Crime, Thriller
+IMDb: 7.6 | My rating: 8/10
+Would rewatch: yes | Best for: alert
+Notes: PTA tension machine, politically charged heat.
+Similar in my list: Punch-Drunk Love, Nightcrawler
+One personal detail: stayed in my body after credits.
+
+### Us (2019)
+Director: Jordan Peele
+Genres: Horror, Mystery, Thriller
+IMDb: 6.8 | My rating: 7/10
+Would rewatch: maybe | Best for: alone
+Notes: Doppelganger nightmare with big ideas; ending divides people including me. Images linger.
+Similar in my list: Weapons, Pearl
+One personal detail: uncanny more than scary for me.
+
+### The Taste of Things (2023)
+Director: Tran Anh Hung
+Genres: Drama, History, Romance
+IMDb: 7.4 | My rating: 8/10
+Would rewatch: yes | Best for: calm night
+Notes: Cooking as love language; steam and patience. Slow food cinema.
+Similar in my list: Tampopo
+One personal detail: sensual without being loud.
+
+### Deep Cover (2025)
+Director: Tom Kingsley
+Genres: Action, Comedy, Crime
+IMDb: 6.7 | My rating: 7/10
+Would rewatch: maybe | Best for: light night
+Notes: Improv-ish undercover comedy energy. Lightweight but I had a good time.
+Similar in my list: Game Night
+One personal detail: from my IMDb export rating.
+
+### Speak No Evil (2024)
+Director: James Watkins
+Genres: Drama, Horror, Thriller
+IMDb: 6.8 | My rating: 7/10
+Would rewatch: maybe | Best for: stress test
+Notes: Social politeness as horror engine. Stressful watch; remake still effective.
+Similar in my list: The Girl with the Needle, Heretic watchlist
+One personal detail: awkward dread done well.
+
+### Smile 2 (2024)
+Director: Parker Finn
+Genres: Horror, Mystery, Thriller
+IMDb: 6.7 | My rating: 7/10
+Would rewatch: maybe | Best for: pop-horror night
+Notes: Pop-star curse escalation; some set pieces slap. Formula visible but committed.
+Similar in my list: Longlegs, Pearl
+One personal detail: fame-as-curse vibe worked.
+
+### The Phoenician Scheme (2025)
+Director: Wes Anderson
+Genres: Action, Comedy, Crime, Drama, Thriller
+IMDb: 6.6 | My rating: 7/10
+Would rewatch: maybe | Best for: visual snack
+Notes: Anderson dollhouse intrigue again. Pretty boxes, medium emotional hit this time.
+Similar in my list: The Royal Tenenbaums, The Fall
+One personal detail: lesser Anderson hit for me vs Tenenbaums.
