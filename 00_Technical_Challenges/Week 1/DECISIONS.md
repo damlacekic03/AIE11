@@ -14,4 +14,4 @@ One row one decision. This week is the first one. By Week 5 this file will expla
 
 **What would change my mind**
 
-> Heading splits create about one chunk per film, so every question re-embeds the whole catalog and cost grows with N. If the list got much larger, I wouldn't keep doing that blindly — I'd need a different approach to indexing/retrieval at that scale, not just bigger character windows.
+> Heading splits create about one chunk per film, so every question re-embeds the whole catalog and cost grows with N. If the list got much larger, I wouldn't keep doing that blindly, I'd need a different approach to indexing/retrieval at that scale, not just bigger character windows.
