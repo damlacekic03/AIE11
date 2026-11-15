@@ -96,7 +96,7 @@ def main(argv: list[str] | None = None) -> int:
     for hit in hits:
         print(f"  {hit.citation()}")
         if args.show_chunks:
-            print(f"      {' '.join(hit.text.split())[:400]}...")
+            print(f"      {' '.join(hit.text.split())[:2000]}...")
 
     sys.stdout.flush()
     print(f"\ntotal {time.perf_counter() - started:.2f}s", file=sys.stderr, flush=True)

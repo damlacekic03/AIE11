@@ -61,7 +61,9 @@ def embed_texts(texts: list[str]) -> np.ndarray:
     result in np.array(). Print `response.usage` once — knowing what a corpus
     costs to embed is the number that decides architecture at scale.
     """
-    raise NotImplementedError("Write embed_texts() in retrieval_app/index.py")
+    response = client().embeddings.create(input=texts, model=EMBEDDING_MODEL)
+    print(f"Embedding usage: {response.usage}")
+    return np.array([item.embedding for item in response.data])     
 
 
 def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
@@ -70,7 +72,12 @@ def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
     Hint: the dot product, divided by the product of the two norms.
     NumPy has `np.dot` and `np.linalg.norm`.
     """
-    raise NotImplementedError("Write cosine_similarity() in retrieval_app/index.py")
+    norm_a = np.linalg.norm(a)
+    norm_b = np.linalg.norm(b)
+    if norm_a == 0 or norm_b == 0:
+        raise ValueError("One of the vectors is zero, cannot compute cosine similarity.")
+    return float(np.dot(a, b) / (norm_a * norm_b))
+
 
 
 def build_index(chunks: list[str]) -> np.ndarray:
@@ -87,8 +94,9 @@ def build_index(chunks: list[str]) -> np.ndarray:
     Hint: this is mostly a call to embed_texts(). Notice that it happens once
     per process, and that a fresh process has no memory of the last one.
     """
-    raise NotImplementedError("Write build_index() in retrieval_app/index.py")
-
+    if not chunks:
+            raise ValueError("chunks list cannot be empty.")
+    return embed_texts(chunks)
 
 def search(query: str, chunks: list[str], matrix: np.ndarray, k: int = 3) -> list[Hit]:
     """Find the k chunks most similar to the query.
@@ -110,4 +118,7 @@ def search(query: str, chunks: list[str], matrix: np.ndarray, k: int = 3) -> lis
       - Read the signature again: it says "up to k". Nothing here forces you to
         return exactly k. That freedom is the whole of Step 4's threshold option.
     """
-    raise NotImplementedError("Write search() in retrieval_app/index.py")
+    query_vector = embed_texts([query])[0] 
+    scores = [cosine_similarity(query_vector, row) for row in matrix]
+    top_indices = np.argsort(scores)[::-1][:k]
+    return [Hit(chunk_id=i, text=chunks[i], score=scores[i]) for i in top_indices]

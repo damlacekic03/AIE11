@@ -7,7 +7,14 @@ in the pipeline to change and often the most effective.
 from .index import Hit, client
 
 CHAT_MODEL = "gpt-4.1-mini"
+RAG_SYSTEM_PROMPT = """You are a personal movie-notes assistant that answers only from the user's film ratings and notes.
+Answer the user's question using ONLY the provided context chunks.
 
+Rules:
+1. Cite the source chunk ID in brackets (e.g., [0]) for every claim you make.
+2. If the provided context does not contain enough information to answer the question, reply exactly with: "I don't know based on the provided context."
+3. Do NOT use outside knowledge, guess, or extrapolate from loosely related chunks.
+"""
 
 def build_messages(question: str, hits: list[Hit]) -> list[dict]:
     """Assemble the messages list sent to the chat model.
@@ -31,8 +38,33 @@ def build_messages(question: str, hits: list[Hit]) -> list[dict]:
     Hint: Session 2's RAG_SYSTEM_TEMPLATE is a good starting point, and a
     better one once you have read Step 3's failures and edited it.
     """
-    raise NotImplementedError("Write build_messages() in retrieval_app/answer.py")
+    if not question or not question.strip():
+        raise ValueError("question cannot be empty.")
+    if not hits:
+        user_content = (
+            "Context:\n"
+            "[No relevant context was found in the corpus.]\n\n"
+            f"Question: {question.strip()}"
+        )
+        return [
+            {"role": "system", "content": RAG_SYSTEM_PROMPT},
+            {"role": "user", "content": user_content},
+        ]
+    formatted_chunks = []
+    for hit in hits:
+        formatted_chunks.append(f"[{hit.chunk_id}]\n{hit.text.strip()}")
 
+    context_block = "\n\n---\n\n".join(formatted_chunks)
+
+    user_content = (
+        f"Context:\n{context_block}\n\n"
+        f"Question: {question.strip()}"
+    )
+
+    return [
+        {"role": "system", "content": RAG_SYSTEM_PROMPT},
+        {"role": "user", "content": user_content},
+    ]
 
 def answer(question: str, hits: list[Hit]) -> str:
     """Call the chat model and return its reply as a string.
@@ -41,4 +73,14 @@ def answer(question: str, hits: list[Hit]) -> str:
     then dig out `.choices[0].message.content`. Look up what `temperature`
     does to your results when you run the same question twice.
     """
-    raise NotImplementedError("Write answer() in retrieval_app/answer.py")
+    messages = build_messages(question, hits)
+    response = client().chat.completions.create(
+        model=CHAT_MODEL,
+        messages=messages,
+        temperature=0
+    )
+    content = response.choices[0].message.content
+    if content is None:
+        raise ValueError("Model returned an empty response (content is None).")
+
+    return content.strip()

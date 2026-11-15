@@ -22,201 +22,188 @@ Films: Moon, Coherence, Looper, Palm Springs, Upgrade.
 Shared taste signal: idea-driven, character-first, not just CGI flex.
 If recommending from my list for "mind-bend but emotional," these are the pool.
 
-## HOW TO ASK ME (examples for testing RAG)
-Lookup: "What did I say about Coherence?"
-Lookup: "My rating for The Brutalist?"
-Needs 2+ chunks: "Compare Vinterberg films in my list."
-Needs 2+ chunks: "Using my taste profile and my 9/10 sci-fi picks, recommend a rewatch."
-Recommend-from-list: "Based on my ratings, recommend one film from my watched list for an anxious night."
-Recommend-from-watchlist: "Based on my taste, pick one WATCHLIST title and explain why."
-Decline: "What did I rate Dune: Part Two?" (not in corpus — should refuse)
-
 ---
 
-## WATCHLIST / CANDIDATES
-# Not watched. Use these when I ask: "recommend something new based on my taste."
-
 ### After Yang (2021)
+Status: watchlist
 Director: Kogonada
 Genres: Drama, Family, Sci-Fi
 IMDb: 6.6
 Why it might fit: Quiet sci-fi grief next to my love of Moon and Coherence — idea-driven, soft, human.
 Fits tags: smart sci-fi, lonely, rewatch-energy
-Status: not watched
 
 ### Decision to Leave (2022)
+Status: watchlist
 Director: Park Chan-wook
 Genres: Crime, Drama, Mystery, Romance, Thriller
 IMDb: 7.2
 Why it might fit: Stylish crime-romance tension near Nightcrawler craft + Black Bag trust-rot vibes.
 Fits tags: sleek thriller, obsessive, adult
-Status: not watched
 
 ### Inside Llewyn Davis (2013)
+Status: watchlist
 Directors: Ethan Coen, Joel Coen
 Genres: Drama, Music
 IMDb: 7.4
 Why it might fit: Melancholy music-world belonging like Almost Famous, but colder and funnier-sad.
 Fits tags: music, bittersweet, character study
-Status: not watched
 
 ### Amadeus (1984)
+Status: watchlist
 Director: Miloš Forman
 Genres: Biography, Drama, Music
 IMDb: 8.4
 Why it might fit: Genius/envy melodrama with theatrical electricity — prestige I might actually enjoy if not Brutalist-long punishment.
 Fits tags: music, rivalry, operatic drama
-Status: not watched
 
 ### The Thing (1982)
+Status: watchlist
 Director: John Carpenter
 Genres: Horror, Mystery, Sci-Fi
 IMDb: 8.2
 Why it might fit: Paranoia creature craft for fans of The Others / Longlegs atmosphere over jump-scare junk.
 Fits tags: isolation horror, distrust, classic
-Status: not watched
 
 ### Misery (1990)
+Status: watchlist
 Director: Rob Reiner
 Genres: Drama, Thriller
 IMDb: 7.8
 Why it might fit: Claustrophobic pressure-cooker like Shiva Baby energy, but thriller-brutal.
 Fits tags: trapped, tense, rewatchable thriller
-Status: not watched
 
 ### Spotlight (2015)
+Status: watchlist
 Director: Tom McCarthy
 Genres: Biography, Crime, Drama
 IMDb: 8.1
 Why it might fit: Procedural moral seriousness adjacent to Nightcrawler's media world, without the sleaze flex.
 Fits tags: journalism, ensemble, grounded
-Status: not watched
 
 ### Aftersun (2022)
+Status: watchlist
 Director: Charlotte Wells
 Genres: Drama
 IMDb: 7.6
 Why it might fit: Quiet ache like The Farewell / Hot Milk / Girl Picture — memory and love without speeches.
 Fits tags: soft devastation, intimate, rewatch
-Status: not watched
 
 ### Another Earth (2011)
+Status: watchlist
 Director: Mike Cahill
 Genres: Drama, Romance, Sci-Fi
 IMDb: 6.9
 Why it might fit: Low-budget parallel-earth emotion in the Moon / Coherence family.
 Fits tags: smart sci-fi, guilt, intimate
-Status: not watched
 
 ### Vivarium (2019)
+Status: watchlist
 Director: Lorcan Finnegan
 Genres: Horror, Mystery, Sci-Fi
 IMDb: 5.8
 Why it might fit: Suburban nightmare loop near Palm Springs existential comedy but darker — also Companion/Upgrade unease.
 Fits tags: uncanny suburbia, trapped, weird
-Status: not watched
 
 ### Dogville (2003)
+Status: watchlist
 Director: Lars von Trier
 Genres: Crime, Drama
 IMDb: 8.0
 Why it might fit: Social system crushing a person — same nerve as The Hunt / The Celebration.
 Fits tags: confrontational, theatrical, heavy
-Status: not watched
 
 ### The Commune (2016)
+Status: watchlist
 Director: Thomas Vinterberg
 Genres: Drama
 IMDb: 6.4
 Why it might fit: Direct Vinterberg cluster extension after The Hunt / Celebration / Submarino.
 Fits tags: Vinterberg, relationships, social experiment
-Status: not watched
 
 ### A Separation (2011)
+Status: watchlist
 Director: Asghar Farhadi
 Genres: Drama
 IMDb: 8.3
 Why it might fit: Moral knot drama with no easy villain — Hunt-level ethical dread in domestic form.
 Fits tags: moral thriller-drama, precise, devastating
-Status: not watched
 
 ### Mulholland Drive (2001)
+Status: watchlist
 Director: David Lynch
 Genres: Drama, Mystery, Thriller
 IMDb: 7.9
 Why it might fit: Dream-logic mystery for Cloud Atlas / Strange Darling "don't explain too fast" taste.
 Fits tags: surreal, Hollywood nightmare, rewatch puzzle
-Status: not watched
 
 ### When Harry Met Sally... (1989)
+Status: watchlist
 Director: Rob Reiner
 Genres: Comedy, Drama, Romance
 IMDb: 7.7
 Why it might fit: Comfort romcom craft next to Palm Springs / Punch-Drunk Love — smarter than holiday filler.
 Fits tags: romance, dialogue, comfort
-Status: not watched
 
 ### Harold and Maude (1971)
+Status: watchlist
 Director: Hal Ashby
 Genres: Comedy, Drama, Romance
 IMDb: 7.8
 Why it might fit: Offbeat romance oddity like Punch-Drunk Love / Humanist Vampire tenderness-weird mix.
 Fits tags: quirky romance, darkly sweet
-Status: not watched
 
 ### Godzilla Minus One (2023)
+Status: watchlist
 Director: Takashi Yamazaki
 Genres: Action, Adventure, Drama, Horror, Sci-Fi
 IMDb: 7.7
 Why it might fit: Spectacle with sincere postwar emotion — Rogue One "war film under genre skin" energy.
 Fits tags: kaiju, grief, craft blockbuster
-Status: not watched
 
 ### Heretic (2024)
+Status: watchlist
 Directors: Scott Beck, Bryan Woods
 Genres: Horror, Thriller
 IMDb: 7.0
 Why it might fit: Talky dread chamber piece for Longlegs / Speak No Evil stress fans.
 Fits tags: claustrophobic horror, ideas, tense
-Status: not watched
 
 ### The Invisible Man (2020)
+Status: watchlist
 Director: Leigh Whannell
 Genres: Drama, Horror, Mystery, Sci-Fi, Thriller
 IMDb: 7.1
 Why it might fit: Same director brain as Upgrade — lean genre with real craft and paranoia.
 Fits tags: Whannell, invisible threat, sharp
-Status: not watched
 
 ### God's Own Country (2017)
+Status: watchlist
 Director: Francis Lee
 Genres: Drama, Romance
 IMDb: 7.6
 Why it might fit: Queer tenderness + landscape intensity near Desert Hearts / Saving Face / Girl Picture.
 Fits tags: queer romance, raw, pastoral
-Status: not watched
 
 ### Water Lilies (2007)
+Status: watchlist
 Director: Céline Sciamma
 Genres: Drama, Romance
 IMDb: 6.7
 Why it might fit: Adolescent queer longing honesty like Girl Picture, softer than prestige homework.
 Fits tags: coming-of-age, queer, intimate
-Status: not watched
 
 ### Force Majeure (2014)
+Status: watchlist
 Director: Ruben Östlund
 Genres: Comedy, Drama
 IMDb: 7.2
 Why it might fit: Social awkwardness as thriller — Shiva Baby cousin in ski-resort form; ego under pressure.
 Fits tags: cringe-drama, satire, relationships
-Status: not watched
 
 ---
 
-## WATCHED
-
 ### The Hunt (2012)
+Status: watched
 Director: Thomas Vinterberg
 Genres: Drama
 IMDb: 8.3 | My rating: 9/10
@@ -226,6 +213,7 @@ Similar in my list: The Celebration, Submarino
 One personal detail: I kept thinking about how quickly a room can turn.
 
 ### Anora (2024)
+Status: watched
 Director: Sean Baker
 Genres: Comedy, Drama, Romance
 IMDb: 7.4 | My rating: 8/10
@@ -235,6 +223,7 @@ Similar in my list: Uncut Gems, A Real Pain
 One personal detail: ending mood stuck longer than the jokes.
 
 ### The Lighthouse (2019)
+Status: watched
 Director: Robert Eggers
 Genres: Drama, Fantasy, Horror, Mystery, Thriller
 IMDb: 7.3 | My rating: 8/10
@@ -244,6 +233,7 @@ Similar in my list: Pearl, Longlegs
 One personal detail: not "fun scary" — more "possessed by seawater."
 
 ### Punch-Drunk Love (2002)
+Status: watched
 Director: Paul Thomas Anderson
 Genres: Comedy, Drama, Romance, Thriller
 IMDb: 7.3 | My rating: 9/10
@@ -253,6 +243,7 @@ Similar in my list: Shiva Baby, Palm Springs
 One personal detail: one of the only romances that feels like my nervous system.
 
 ### A Real Pain (2024)
+Status: watched
 Director: Jesse Eisenberg
 Genres: Comedy, Drama
 IMDb: 7.0 | My rating: 8/10
@@ -262,6 +253,7 @@ Similar in my list: The Farewell, Almost Famous
 One personal detail: laughed then felt guilty for laughing.
 
 ### The Wild Robot (2024)
+Status: watched
 Director: Chris Sanders
 Genres: Animation, Adventure, Family, Sci-Fi
 IMDb: 8.1 | My rating: 9/10
@@ -271,6 +263,7 @@ Similar in my list: English Vinglish
 One personal detail: cried at "family is made" themes.
 
 ### The Brutalist (2024)
+Status: watched
 Director: Brady Corbet
 Genres: Drama
 IMDb: 7.2 | My rating: 5/10
@@ -280,6 +273,7 @@ Similar in my list: (anti-pick vs) Train Dreams which did quiet epic better for 
 One personal detail: this is my warning label for "prestige runtime."
 
 ### The Girl with the Needle (2024)
+Status: watched
 Director: Magnus von Horn
 Genres: Crime, Drama, History
 IMDb: 7.5 | My rating: 8/10
@@ -289,6 +283,7 @@ Similar in my list: The Celebration, Speak No Evil
 One personal detail: felt physically cold after.
 
 ### Ready or Not (2019)
+Status: watched
 Directors: Matt Bettinelli-Olpin, Tyler Gillett
 Genres: Comedy, Horror, Mystery
 IMDb: 6.9 | My rating: 8/10
@@ -298,6 +293,7 @@ Similar in my list: Game Night, Strange Darling
 One personal detail: comfort violent comedy.
 
 ### Longlegs (2024)
+Status: watched
 Director: Osgood Perkins
 Genres: Crime, Horror, Mystery, Thriller
 IMDb: 6.5 | My rating: 7/10
@@ -307,6 +303,7 @@ Similar in my list: The Lighthouse, Smile 2
 One personal detail: vibe > story for me here.
 
 ### The Fall (2006)
+Status: watched
 Director: Tarsem Singh
 Genres: Adventure, Drama, Fantasy
 IMDb: 7.8 | My rating: 9/10
@@ -316,6 +313,7 @@ Similar in my list: Cloud Atlas, The Phoenician Scheme
 One personal detail: "look at this" cinema peak.
 
 ### Pearl (2022)
+Status: watched
 Director: Ti West
 Genres: Drama, Horror, Thriller
 IMDb: 7.0 | My rating: 8/10
@@ -325,6 +323,7 @@ Similar in my list: Promising Young Woman, Saltburn
 One personal detail: the smile is a weapon.
 
 ### Mickey 17 (2025)
+Status: watched
 Director: Bong Joon Ho
 Genres: Adventure, Comedy, Fantasy, Sci-Fi
 IMDb: 6.7 | My rating: 7/10
@@ -334,6 +333,7 @@ Similar in my list: Starship Troopers, Upgrade
 One personal detail: laughed at bureaucracy more than gags.
 
 ### Shiva Baby (2020)
+Status: watched
 Director: Emma Seligman
 Genres: Comedy, Drama
 IMDb: 7.1 | My rating: 9/10
@@ -343,6 +343,7 @@ Similar in my list: Punch-Drunk Love, Uncut Gems
 One personal detail: my nervous system recognized this instantly.
 
 ### Starship Troopers (1997)
+Status: watched
 Director: Paul Verhoeven
 Genres: Action, Adventure, Sci-Fi, Thriller
 IMDb: 7.3 | My rating: 9/10
@@ -352,6 +353,7 @@ Similar in my list: Mickey 17
 One personal detail: my "are you watching the subtext?" test movie.
 
 ### Tampopo (1985)
+Status: watched
 Director: Jūzō Itami
 Genres: Comedy
 IMDb: 7.9 | My rating: 9/10
@@ -361,6 +363,7 @@ Similar in my list: The Taste of Things
 One personal detail: made me hungry and weirdly emotional.
 
 ### LCV (Lütfen Cevap Veriniz) (2022)
+Status: watched
 Directors: Kaan Arici, Ismet Kurtulus
 Genres: Drama
 IMDb: 6.4 | My rating: 7/10
@@ -370,6 +373,7 @@ Similar in my list: Hot Milk, Girl Picture
 One personal detail: rarity bonus — closer to my world.
 
 ### The Celebration (1998)
+Status: watched
 Director: Thomas Vinterberg
 Genres: Drama
 IMDb: 8.0 | My rating: 9/10
@@ -379,6 +383,7 @@ Similar in my list: The Hunt, Submarino
 One personal detail: table scenes make me brace.
 
 ### Submarino (2010)
+Status: watched
 Director: Thomas Vinterberg
 Genres: Drama
 IMDb: 7.5 | My rating: 8/10
@@ -388,6 +393,7 @@ Similar in my list: The Hunt, The Celebration
 One personal detail: the "less famous but strong" Vinterberg for me.
 
 ### Looper (2012)
+Status: watched
 Director: Rian Johnson
 Genres: Action, Drama, Sci-Fi, Thriller
 IMDb: 7.4 | My rating: 8/10
@@ -397,6 +403,7 @@ Similar in my list: Coherence, Moon
 One personal detail: ending still works emotionally.
 
 ### Black Bag (2025)
+Status: watched
 Director: Steven Soderbergh
 Genres: Drama, Mystery, Romance, Thriller
 IMDb: 6.7 | My rating: 7/10
@@ -406,6 +413,7 @@ Similar in my list: Nightcrawler
 One personal detail: I like spies when they're about trust rot.
 
 ### Upgrade (2018)
+Status: watched
 Director: Leigh Whannell
 Genres: Action, Sci-Fi, Thriller
 IMDb: 7.5 | My rating: 8/10
@@ -415,6 +423,7 @@ Similar in my list: Companion, Mickey 17
 One personal detail: my "smart B-movie" gold standard.
 
 ### Drive (2011)
+Status: watched
 Director: Nicolas Winding Refn
 Genres: Action, Drama
 IMDb: 7.8 | My rating: 9/10
@@ -424,6 +433,7 @@ Similar in my list: Nightcrawler, The Batman
 One personal detail: soundtrack permanently installed.
 
 ### Strange Darling (2023)
+Status: watched
 Director: JT Mollner
 Genres: Horror, Thriller
 IMDb: 7.0 | My rating: 8/10
@@ -433,6 +443,7 @@ Similar in my list: Ready or Not, The Invisible Guest
 One personal detail: told friends "don't Google anything."
 
 ### Civil War (2024)
+Status: watched
 Director: Alex Garland
 Genres: Action, Thriller, War
 IMDb: 7.0 | My rating: 6/10
@@ -442,6 +453,7 @@ Similar in my list: Rogue One, Weapons
 One personal detail: remembered shots more than people.
 
 ### Cloud Atlas (2012)
+Status: watched
 Directors: Tom Tykwer, Lana Wachowski, Lilly Wachowski
 Genres: Drama, Mystery, Sci-Fi, Thriller
 IMDb: 7.3 | My rating: 8/10
@@ -451,6 +463,7 @@ Similar in my list: The Fall, The Life of Chuck
 One personal detail: I like ambition that risks looking foolish.
 
 ### Humanist Vampire Seeking Consenting Suicidal Person (2023)
+Status: watched
 Director: Ariane Louis-Seize
 Genres: Comedy, Drama, Fantasy, Horror
 IMDb: 7.0 | My rating: 8/10
@@ -460,6 +473,7 @@ Similar in my list: Palm Springs, Girl Picture
 One personal detail: unexpectedly wholesome bloodsucking.
 
 ### Almost Famous (2000)
+Status: watched
 Director: Cameron Crowe
 Genres: Adventure, Comedy, Drama, Music
 IMDb: 7.9 | My rating: 9/10
@@ -469,6 +483,7 @@ Similar in my list: Zindagi Na Milegi Dobara, The Farewell
 One personal detail: my "music people finding home" movie.
 
 ### The Batman (2022)
+Status: watched
 Director: Matt Reeves
 Genres: Action, Crime, Mystery
 IMDb: 7.8 | My rating: 8/10
@@ -478,6 +493,7 @@ Similar in my list: Drive, Nightcrawler
 One personal detail: riddler newsprint vibe > punchouts.
 
 ### Palm Springs (2020)
+Status: watched
 Director: Max Barbakow
 Genres: Comedy, Fantasy, Mystery, Romance, Sci-Fi
 IMDb: 7.4 | My rating: 9/10
@@ -487,6 +503,7 @@ Similar in my list: Coherence, Punch-Drunk Love
 One personal detail: comfort movie that still thinks.
 
 ### Sinners (2025)
+Status: watched
 Director: Ryan Coogler
 Genres: Horror
 IMDb: 7.5 | My rating: 8/10
@@ -496,6 +513,7 @@ Similar in my list: Pearl, Us
 One personal detail: felt like "event horror" without empty IP.
 
 ### Companion (2025)
+Status: watched
 Director: Drew Hancock
 Genres: Sci-Fi, Thriller
 IMDb: 6.9 | My rating: 7/10
@@ -505,6 +523,7 @@ Similar in my list: Upgrade, Black Bag
 One personal detail: concept smarter than some of the turns.
 
 ### Rogue One (2016)
+Status: watched
 Director: Gareth Edwards
 Genres: Action, Adventure, Sci-Fi
 IMDb: 7.8 | My rating: 8/10
@@ -514,6 +533,7 @@ Similar in my list: Civil War, Starship Troopers
 One personal detail: sacrifice ending actually hurts.
 
 ### Super Deluxe (2019)
+Status: watched
 Director: Thiagarajan Kumararaja
 Genres: Comedy, Crime, Drama, Thriller
 IMDb: 8.2 | My rating: 9/10
@@ -523,15 +543,17 @@ Similar in my list: Wild Tales, Uncut Gems
 One personal detail: my "why don't more people talk about this" title.
 
 ### Moon (2009)
+Status: watched
 Director: Duncan Jones
 Genres: Drama, Mystery, Sci-Fi
-IMDb: 7.8 | My rating: 9/10
+IMDb: 7.8 | My rating: 7/10
 Would rewatch: yes | Best for: alone
 Notes: Clone loneliness on a shoestring. Rockwell carries a planet.
 Similar in my list: Coherence
 One personal detail: quiet sci-fi > spectacle sci-fi for me.
 
 ### The World's End (2013)
+Status: watched
 Director: Edgar Wright
 Genres: Action, Comedy, Sci-Fi
 IMDb: 6.9 | My rating: 8/10
@@ -541,6 +563,7 @@ Similar in my list: Game Night
 One personal detail: ending is secretly sad.
 
 ### Coherence (2013)
+Status: watched
 Director: James Ward Byrkit
 Genres: Mystery, Sci-Fi, Thriller
 IMDb: 7.1 | My rating: 9/10
@@ -550,6 +573,7 @@ Similar in my list: Moon, Palm Springs
 One personal detail: told everyone "just watch, no questions."
 
 ### My Cousin Vinny (1992)
+Status: watched
 Director: Jonathan Lynn
 Genres: Comedy, Crime
 IMDb: 7.6 | My rating: 9/10
@@ -559,6 +583,7 @@ Similar in my list: Game Night, The Invisible Guest
 One personal detail: peak "competence is sexy" comedy.
 
 ### Drive-Away Dolls (2024)
+Status: watched
 Director: Ethan Coen
 Genres: Action, Comedy, Crime, Thriller
 IMDb: 5.4 | My rating: 7/10
@@ -568,6 +593,7 @@ Similar in my list: Ready or Not
 One personal detail: I liked it more than the score suggests.
 
 ### My Old Ass (2024)
+Status: watched
 Director: Megan Park
 Genres: Comedy, Drama, Fantasy, Romance
 IMDb: 6.9 | My rating: 5/10
@@ -577,6 +603,7 @@ Similar in my list: (contrast) Palm Springs did existential comedy better
 One personal detail: wanted sharper teeth.
 
 ### Game Night (2018)
+Status: watched
 Directors: John Francis Daley, Jonathan Goldstein
 Genres: Action, Adventure, Comedy, Crime, Mystery, Thriller
 IMDb: 6.9 | My rating: 8/10
@@ -586,6 +613,7 @@ Similar in my list: Ready or Not, My Cousin Vinny
 One personal detail: my "bring this to a group" default.
 
 ### Wild Tales (2014)
+Status: watched
 Director: Damián Szifron
 Genres: Comedy, Drama, Thriller
 IMDb: 8.1 | My rating: 9/10
@@ -595,6 +623,7 @@ Similar in my list: Super Deluxe, Ready or Not
 One personal detail: anger never felt this fun.
 
 ### The Invisible Guest (2016)
+Status: watched
 Director: Oriol Paulo
 Genres: Crime, Drama, Mystery, Thriller
 IMDb: 8.0 | My rating: 8/10
@@ -604,6 +633,7 @@ Similar in my list: Strange Darling, Wake Up Dead Man
 One personal detail: love "one more card over" mysteries.
 
 ### Zindagi Na Milegi Dobara (2011)
+Status: watched
 Director: Zoya Akhtar
 Genres: Adventure, Comedy, Drama, Musical, Romance
 IMDb: 8.2 | My rating: 9/10
@@ -613,6 +643,7 @@ Similar in my list: Almost Famous, The Farewell
 One personal detail: makes me want a trip and a cry.
 
 ### Eddington (2025)
+Status: watched
 Director: Ari Aster
 Genres: Comedy, Drama, Western
 IMDb: 6.6 | My rating: 6/10
@@ -622,6 +653,7 @@ Similar in my list: Civil War, Saltburn
 One personal detail: unsettled me without loving me.
 
 ### Nightcrawler (2014)
+Status: watched
 Director: Dan Gilroy
 Genres: Crime, Drama, Thriller
 IMDb: 7.8 | My rating: 9/10
@@ -631,6 +663,7 @@ Similar in my list: Drive, Uncut Gems
 One personal detail: Gyllenhaal smile is a threat.
 
 ### Battle Royale (2000)
+Status: watched
 Director: Kinji Fukasaku
 Genres: Action, Drama, Thriller
 IMDb: 7.5 | My rating: 8/10
@@ -640,6 +673,7 @@ Similar in my list: Starship Troopers, Ready or Not
 One personal detail: historical context makes it harsher.
 
 ### Hot Milk (2025)
+Status: watched
 Director: Rebecca Lenkiewicz
 Genres: Drama
 IMDb: 5.6 | My rating: 7/10
@@ -649,6 +683,7 @@ Similar in my list: LCV, Girl Picture
 One personal detail: rated above IMDb because mood matched me.
 
 ### Uncut Gems (2019)
+Status: watched
 Directors: Benny Safdie, Josh Safdie
 Genres: Crime, Drama, Thriller
 IMDb: 7.4 | My rating: 9/10
@@ -658,6 +693,7 @@ Similar in my list: Shiva Baby, Nightcrawler
 One personal detail: my heart-rate movie.
 
 ### Girl Picture (2022)
+Status: watched
 Director: Alli Haapasalo
 Genres: Drama, Romance
 IMDb: 6.9 | My rating: 8/10
@@ -667,6 +703,7 @@ Similar in my list: Desert Hearts, Saving Face
 One personal detail: honesty over plot fireworks.
 
 ### The Life of Chuck (2024)
+Status: watched
 Director: Mike Flanagan
 Genres: Drama, Fantasy, Sci-Fi
 IMDb: 7.3 | My rating: 8/10
@@ -676,6 +713,7 @@ Similar in my list: Cloud Atlas, English Vinglish
 One personal detail: cried at ordinary life being cosmic.
 
 ### English Vinglish (2012)
+Status: watched
 Director: Gauri Shinde
 Genres: Comedy, Drama, Family
 IMDb: 7.8 | My rating: 9/10
@@ -685,6 +723,7 @@ Similar in my list: The Farewell, Saving Face
 One personal detail: cried without tragedy set pieces.
 
 ### Saving Face (2004)
+Status: watched
 Director: Alice Wu
 Genres: Comedy, Drama, Romance
 IMDb: 7.4 | My rating: 9/10
@@ -694,6 +733,7 @@ Similar in my list: The Farewell, Desert Hearts
 One personal detail: my "joy with consequences" romance.
 
 ### Back to the Future (1985)
+Status: watched
 Director: Robert Zemeckis
 Genres: Adventure, Comedy, Sci-Fi
 IMDb: 8.5 | My rating: 9/10
@@ -703,6 +743,7 @@ Similar in my list: Palm Springs, Looper
 One personal detail: always works; no caveats.
 
 ### The Farewell (2019)
+Status: watched
 Director: Lulu Wang
 Genres: Comedy, Drama, Family
 IMDb: 7.5 | My rating: 9/10
@@ -712,6 +753,7 @@ Similar in my list: English Vinglish, Saving Face
 One personal detail: the goodbye that isn't named.
 
 ### The Royal Tenenbaums (2001)
+Status: watched
 Director: Wes Anderson
 Genres: Comedy, Drama
 IMDb: 7.6 | My rating: 9/10
@@ -721,6 +763,7 @@ Similar in my list: Almost Famous
 One personal detail: sad-funny baseline.
 
 ### Sunshine (2007)
+Status: watched
 Director: Danny Boyle
 Genres: Sci-Fi, Thriller
 IMDb: 7.2 | My rating: 8/10
@@ -730,6 +773,7 @@ Similar in my list: Moon, Rogue One
 One personal detail: I defend it in arguments.
 
 ### Desert Hearts (1985)
+Status: watched
 Director: Donna Deitch
 Genres: Drama, Romance
 IMDb: 7.1 | My rating: 8/10
@@ -739,6 +783,7 @@ Similar in my list: Saving Face, Girl Picture
 One personal detail: foundational romance texture.
 
 ### Weapons (2025)
+Status: watched
 Director: Zach Cregger
 Genres: Horror, Mystery
 IMDb: 7.4 | My rating: 8/10
@@ -748,6 +793,7 @@ Similar in my list: Longlegs
 One personal detail: wanted slightly tighter landing, still strong.
 
 ### Saltburn (2023)
+Status: watched
 Director: Emerald Fennell
 Genres: Comedy, Drama, Thriller
 IMDb: 7.0 | My rating: 7/10
@@ -757,6 +803,7 @@ Similar in my list: Promising Young Woman, Pearl
 One personal detail: remembered bathroom more than themes.
 
 ### Caught Stealing (2025)
+Status: watched
 Director: Darren Aronofsky
 Genres: Comedy, Crime, Thriller
 IMDb: 6.8 | My rating: 6/10
@@ -766,6 +813,7 @@ Similar in my list: Drive-Away Dolls
 One personal detail: fine, not sticky.
 
 ### Promising Young Woman (2020)
+Status: watched
 Director: Emerald Fennell
 Genres: Crime, Drama, Mystery, Thriller
 IMDb: 7.5 | My rating: 8/10
@@ -775,6 +823,7 @@ Similar in my list: Pearl, Saltburn
 One personal detail: tonal whiplash is the point and the problem.
 
 ### The Others (2001)
+Status: watched
 Director: Alejandro Amenábar
 Genres: Horror, Mystery, Thriller
 IMDb: 7.6 | My rating: 9/10
@@ -784,6 +833,7 @@ Similar in my list: Longlegs, Weapons
 One personal detail: still my ghost-story benchmark.
 
 ### Train Dreams (2025)
+Status: watched
 Director: Clint Bentley
 Genres: Drama
 IMDb: 7.5 | My rating: 8/10
@@ -793,6 +843,7 @@ Similar in my list: Moon, The Farewell
 One personal detail: proof I can love slow if it breathes.
 
 ### Wake Up Dead Man (2025)
+Status: watched
 Director: Rian Johnson
 Genres: Comedy, Crime, Drama, Mystery, Thriller
 IMDb: 7.3 | My rating: 8/10
@@ -802,6 +853,7 @@ Similar in my list: The Invisible Guest, Game Night
 One personal detail: clue-density makes me happy.
 
 ### One Battle After Another (2025)
+Status: watched
 Director: Paul Thomas Anderson
 Genres: Crime, Thriller
 IMDb: 7.6 | My rating: 8/10
@@ -811,6 +863,7 @@ Similar in my list: Punch-Drunk Love, Nightcrawler
 One personal detail: stayed in my body after credits.
 
 ### Us (2019)
+Status: watched
 Director: Jordan Peele
 Genres: Horror, Mystery, Thriller
 IMDb: 6.8 | My rating: 7/10
@@ -820,6 +873,7 @@ Similar in my list: Weapons, Pearl
 One personal detail: uncanny more than scary for me.
 
 ### The Taste of Things (2023)
+Status: watched
 Director: Tran Anh Hung
 Genres: Drama, History, Romance
 IMDb: 7.4 | My rating: 8/10
@@ -829,6 +883,7 @@ Similar in my list: Tampopo
 One personal detail: sensual without being loud.
 
 ### Deep Cover (2025)
+Status: watched
 Director: Tom Kingsley
 Genres: Action, Comedy, Crime
 IMDb: 6.7 | My rating: 7/10
@@ -838,6 +893,7 @@ Similar in my list: Game Night
 One personal detail: from my IMDb export rating.
 
 ### Speak No Evil (2024)
+Status: watched
 Director: James Watkins
 Genres: Drama, Horror, Thriller
 IMDb: 6.8 | My rating: 7/10
@@ -847,6 +903,7 @@ Similar in my list: The Girl with the Needle, Heretic watchlist
 One personal detail: awkward dread done well.
 
 ### Smile 2 (2024)
+Status: watched
 Director: Parker Finn
 Genres: Horror, Mystery, Thriller
 IMDb: 6.7 | My rating: 7/10
@@ -856,6 +913,7 @@ Similar in my list: Longlegs, Pearl
 One personal detail: fame-as-curse vibe worked.
 
 ### The Phoenician Scheme (2025)
+Status: watched
 Director: Wes Anderson
 Genres: Action, Comedy, Crime, Drama, Thriller
 IMDb: 6.6 | My rating: 7/10

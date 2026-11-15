@@ -9,6 +9,7 @@ Neither function knows or cares what your corpus is about. That is the point:
 swap the .txt in data/ and nothing in this file should need to change.
 """
 
+from email.mime import text
 from pathlib import Path
 
 
@@ -24,8 +25,14 @@ def load_corpus(path: Path) -> str:
     Hint: this is three lines. `open()`, or `Path.read_text()`. Mind the
     encoding: read it as utf-8, and your own corpus may need you to mean it.
     """
-    raise NotImplementedError("Write load_corpus() in retrieval_app/corpus.py")
-
+    if path.suffix.lower() != ".txt":
+        raise ValueError(f"Corpus file {path} is not a .txt file.")
+    if not path.is_file():
+         raise FileNotFoundError(f"No such file: {path}")
+    text = path.read_text(encoding="utf-8")
+    if not text.strip():
+         raise ValueError(f"Corpus file is empty: {path}")
+    return text    
 
 def split_corpus(text: str, chunk_size: int = 1000, chunk_overlap: int = 200) -> list[str]:
     """Split one long string into a list of overlapping chunks.
@@ -47,4 +54,69 @@ def split_corpus(text: str, chunk_size: int = 1000, chunk_overlap: int = 200) ->
     Hint: a range() that steps by (chunk_size - chunk_overlap), slicing as it
     goes. Why does the step subtract the overlap rather than add it?
     """
-    raise NotImplementedError("Write split_corpus() in retrieval_app/corpus.py")
+    """if not text or not text.strip():
+         return []
+    chunks = []
+    start = 0
+    text_length = len(text)
+
+    while start < text_length:
+        end = start + chunk_size
+        chunks.append(text[start:end])
+
+        if end >= text_length:
+            break
+
+        start += chunk_size - chunk_overlap
+
+    return chunks"""
+    """if not text or not text.strip():
+        return []
+
+    lines = text.splitlines()
+    chunks = []
+    current = []
+
+    for line in lines:
+        stripped = line.lstrip()
+        is_heading = stripped.startswith("## ") or stripped.startswith("### ")
+
+        if is_heading and current:
+            chunks.append("\n".join(current))
+            current = [line]
+        else:
+            current.append(line)
+
+    if current:
+        chunks.append("\n".join(current))
+
+    chunks = [chunk.strip() for chunk in chunks if chunk.strip()]
+    return chunks"""
+    if not text or not text.strip():
+        return []
+
+    chunks = []
+    current = []
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+
+        if stripped.startswith(("## ", "### ")):
+            # Önceki birikeni kaydet
+            if current:
+                chunk_text = "\n".join(current).strip()
+                if chunk_text:
+                    chunks.append(chunk_text)
+            # Yenisine başla
+            current = [line]
+        else:
+            # Diğer satır -> biriktir
+            current.append(line)
+
+    # Döngü bitince son birikeni de kaydet
+    if current:
+        chunk_text = "\n".join(current).strip()
+        if chunk_text:
+            chunks.append(chunk_text)
+
+    return chunks
