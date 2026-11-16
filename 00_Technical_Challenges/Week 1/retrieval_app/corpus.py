@@ -9,7 +9,6 @@ Neither function knows or cares what your corpus is about. That is the point:
 swap the .txt in data/ and nothing in this file should need to change.
 """
 
-from email.mime import text
 from pathlib import Path
 
 
@@ -70,28 +69,6 @@ def split_corpus(text: str, chunk_size: int = 1000, chunk_overlap: int = 200) ->
         start += chunk_size - chunk_overlap
 
     return chunks"""
-    """if not text or not text.strip():
-        return []
-
-    lines = text.splitlines()
-    chunks = []
-    current = []
-
-    for line in lines:
-        stripped = line.lstrip()
-        is_heading = stripped.startswith("## ") or stripped.startswith("### ")
-
-        if is_heading and current:
-            chunks.append("\n".join(current))
-            current = [line]
-        else:
-            current.append(line)
-
-    if current:
-        chunks.append("\n".join(current))
-
-    chunks = [chunk.strip() for chunk in chunks if chunk.strip()]
-    return chunks"""
     if not text or not text.strip():
         return []
 
@@ -102,18 +79,14 @@ def split_corpus(text: str, chunk_size: int = 1000, chunk_overlap: int = 200) ->
         stripped = line.lstrip()
 
         if stripped.startswith(("## ", "### ")):
-            # Önceki birikeni kaydet
             if current:
                 chunk_text = "\n".join(current).strip()
                 if chunk_text:
                     chunks.append(chunk_text)
-            # Yenisine başla
             current = [line]
         else:
-            # Diğer satır -> biriktir
             current.append(line)
 
-    # Döngü bitince son birikeni de kaydet
     if current:
         chunk_text = "\n".join(current).strip()
         if chunk_text:
