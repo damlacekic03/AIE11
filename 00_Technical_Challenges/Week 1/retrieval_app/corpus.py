@@ -69,6 +69,7 @@ def split_corpus(text: str, chunk_size: int = 1000, chunk_overlap: int = 200) ->
         start += chunk_size - chunk_overlap
 
     return chunks"""
+
     if not text or not text.strip():
         return []
 

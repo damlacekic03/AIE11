@@ -53,3 +53,24 @@ Corpus: `data/my_movies.txt`. Before = character split (1000/200). After = headi
 
 1. **Watchlist vs watched** can still mix in Sources on soft questions (`mom` / `taste`). `Status:` helps as a signal but is not a hard filter. I did not add a keyword filter in `search` (too corpus-specific); would revisit with real metadata later.
 2. **Exhaustive lists (#9)** — “every `Would rewatch: yes`” needs far more than `k=3` hits. After heading splits the top chunks are clean single films, but the answer is still incomplete (only three titles). Fix would be higher `k`, aggregation, or “I can’t list them all from top-k” in the prompt — not different chunk boundaries.
+
+### Real-user questions
+
+A friend asked three questions in their own words; I ran the CLI with heading splits (`--show-chunks`).
+
+| # | Their question | App answer (summary) | Top Sources | Problem / note |
+|---|----------|----------------------|-------------|----------------|
+| 1 | Something to watch with my mom? | Recommended **Hot Milk** (mother-daughter, quiet, 7/10); also floated After Yang (watchlist) and My Old Ass (low rating / skip). | [73] Hot Milk `watched`; [4] After Yang `watchlist`; [65] My Old Ass `watched` | **Mom → “mother-daughter” keyword**, not comfort. Mixed **watched + watchlist**. Stressful drama may be a bad “with mom” pick even if retrieval is on-topic. |
+| 2 | I’m happy tonight, what fits? | **Game Night** for friends / rewatch; also **When Harry Met Sally…** on watchlist as comfort romcom. | [18] WHMS `watchlist`; [1] taste profile; [66] Game Night `watched` | **Mood underspecified** — scores ~0.31 flat. “Happy” isn’t in the corpus; app leaned on “friends” / “comfort” tags. Shelf mixed again. |
+| 3 | Any Vinterberg I haven’t seen? | Named Hunt / Celebration / Submarino as seen; recommended **The Commune** on watchlist. | [2] Vinterberg cluster; [44] Submarino; [15] The Commune `watchlist` | Worked well — director + “haven’t seen” matched cluster + Status. Best of the three. |
+
+**Their reactions (in their words):** _(fill in after you show them the answers)_
+
+#### Problems we still saw (not “everything works”)
+
+1. **Mom ≠ good shared watch** — Retrieval latched onto “mother-daughter” in Hot Milk. Lexically on-topic; socially questionable for a casual mom night.
+2. **Shelf still fuzzy** — Mom and happy questions mixed **watched** and **watchlist** in Sources; model narrates both.
+3. **Happy / mood questions are under-specified** — Almost no corpus vocabulary for “happy”; flat scores; easy to drift.
+4. **Vinterberg worked better** — Explicit director + watchlist hook. Casual social/mood prompts do not have that.
+
+So the real-user pass is useful: heading splits help structured lookups, but casual prompts still expose retrieval and prompt gaps — not a clean 3/3 “user loved it” story.
